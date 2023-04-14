@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+#### link to ruby github
+https://github.com/joycenjoroge/phase-3-sinatra-react-project
+
+### link to deployed ruby api
+https://recipe-box-sinatra-project.onrender.com
+
+### link to deployed react app
+https://recipe-box-react-project.onrender.com
+
+Copyright @Joyce Njoroge 2023
