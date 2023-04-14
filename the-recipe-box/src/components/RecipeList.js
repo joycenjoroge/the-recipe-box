@@ -1,12 +1,11 @@
 import React from 'react';
-import Recipe from './Recipe';
+import RecipeCard from './RecipeCard';
 
 const RecipeList = ({ recipes }) => {
   return (
     <div>
-      {recipes.map(recipe => (
-        <Recipe key={recipe.id} recipe={recipe} />
-      ))}
+      <h2>Recipes</h2>
+      {recipes.map(recipe => <RecipeCard key={recipe.id} recipe={recipe} />)}
     </div>
   );
 }

@@ -1,53 +1,52 @@
 import React, { useState } from 'react';
 
-const RecipeForm = ({ addRecipe }) => {
-  const [recipe, setRecipe] = useState({
-    name: '',
-    ingredients: '',
-    instructions: ''
-  });
-
-  const handleChange = (event) => {
-    setRecipe({
-      ...recipe,
-      [event.target.name]: event.target.value
-    });
-  }
+const RecipeForm = ({ onSubmit }) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [instructions, setInstructions] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const { name, ingredients, instructions } = recipe;
+    const newRecipe = {
+      title: title.trim(),
+      description: description.trim(),
+      ingredients: ingredients.trim(),
+      instructions: instructions.trim()
+    };
 
-    if (name.trim() && ingredients.trim() && instructions.trim()) {
-      addRecipe(recipe);
+    onSubmit(newRecipe);
 
-      setRecipe({
-        name: '',
-        ingredients: '',
-        instructions: ''
-      });
-    }
+    setTitle('');
+    setDescription('');
+    setIngredients('');
+    setInstructions('');
   }
 
-  const { name, ingredients, instructions } = recipe;
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label id="name">Name</label>
-        <input type="text" id="name" name="name" value={name} onChange={handleChange} />
-      </div>
-      <div>
-        <label id="ingredients">Ingredients</label>
-        <textarea id="ingredients" name="ingredients" value={ingredients} onChange={handleChange}></textarea>
-      </div>
-      <div>
-        <label id="instructions">Instructions</label>
-        <textarea id="instructions" name="instructions" value={instructions} onChange={handleChange}></textarea>
-      </div>
-      <button type="submit">Add Recipe</button>
-    </form>
+    <div>
+      <h2>Add Recipe</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label id="title">Title</label>
+          <input type="text" name="title" id="title" value={title} onChange={e => setTitle(e.target.value)} />
+        </div>
+        <div>
+          <label id="description">Description</label>
+          <input type="text" name="description" id="description" value={description} onChange={e => setDescription(e.target.value)} />
+        </div>
+        <div>
+          <label id="ingredients">Ingredients</label>
+          <textarea name="ingredients" id="ingredients" value={ingredients} onChange={e => setIngredients(e.target.value)} />
+        </div>
+        <div>
+          <label id="instructions">Instructions</label>
+          <textarea name="instructions" id="instructions" value={instructions} onChange={e => setInstructions(e.target.value)} />
+        </div>
+        <button type="submit">Add Recipe</button>
+      </form>
+    </div>
   );
 }
 

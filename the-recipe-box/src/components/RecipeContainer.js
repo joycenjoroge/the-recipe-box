@@ -7,15 +7,15 @@ class RecipeContainer extends Component {
     recipes: [],
     loading: true
   }
-
+ 
   componentDidMount() {
-    fetch('/recipes')
+    fetch('https://recipe-box-sinatra-project.onrender.com/recipes')
       .then(res => res.json())
       .then(recipes => this.setState({ recipes, loading: false }));
   }
 
   addRecipe = (recipe) => {
-    fetch('/recipes', {
+    fetch('https://recipe-box-sinatra-project.onrender.com/recipes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
